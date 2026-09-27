@@ -931,7 +931,7 @@ void bl_init(void)
       showMessageWithLogo(NONE);
     }
 #else
-    display_show_image(storedLogoOrDefault(1), DEFAULT_IMAGE_SIZE, false, true);
+    display_show_msg(storedLogoOrDefault(1), NONE);
 #endif // BOARD_TRMNL_X
     // Force the display to show the current playlist image after the loading screen
     // (even if it hasn't changed)

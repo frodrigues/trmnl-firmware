@@ -35,7 +35,7 @@ std::vector<ParsedModemNetwork> parseCwlapResponse(const String &raw) {
     int c5 = entry.indexOf(',', c4 + 1);
     int channel = entry.substring(c4 + 1, c5 >= 0 ? c5 : entry.length()).toInt();
 
-    if (ssid.length() == 0 || ssid == "TRMNL") {
+    if (ssid.length() == 0 || ssid == "LIA") {
       pos = close;
       continue;
     }

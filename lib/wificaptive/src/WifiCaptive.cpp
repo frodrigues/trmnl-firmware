@@ -529,7 +529,7 @@ std::vector<WifiNetwork> WifiCaptive::getScannedUniqueNetworks(bool runScan) {
 
   // Process each found network
   for (int i = 0; i < n; ++i) {
-    if (!WiFi.SSID(i).equals("TRMNL")) {
+    if (!WiFi.SSID(i).equals("LIA")) {
       String ssid = WiFi.SSID(i);
       int32_t rssi = WiFi.RSSI(i);
 

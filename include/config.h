@@ -101,13 +101,13 @@
 
 // DHCP hostname prefix (hyphens instead of spaces).
 #if defined(PARALLEL_EPD)
-#define WIFI_CLIENT_HOSTNAME_PREFIX "TRMNL-X"
+#define WIFI_CLIENT_HOSTNAME_PREFIX "LIA-X"
 #elif defined(BOARD_TRMNL) || defined(BOARD_TRMNL_GEN2)
-#define WIFI_CLIENT_HOSTNAME_PREFIX "TRMNL-OG"
+#define WIFI_CLIENT_HOSTNAME_PREFIX "LIA-OG"
 #elif defined(BOARD_TRMNL_4CLR)
-#define WIFI_CLIENT_HOSTNAME_PREFIX "TRMNL-BWRY"
+#define WIFI_CLIENT_HOSTNAME_PREFIX "LIA-BWRY"
 #else
-#define WIFI_CLIENT_HOSTNAME_PREFIX "TRMNL"
+#define WIFI_CLIENT_HOSTNAME_PREFIX "LIA"
 #endif
 
 #if defined(BOARD_XIAO_EPAPER_DISPLAY) || defined(BOARD_SEEED_RETERMINAL_E1001) ||                                     \
@@ -126,7 +126,7 @@
 #define BUTTON_SOFT_RESET_TIME             15000
 #define BUTTON_DOUBLE_CLICK_WINDOW         800
 
-#define API_BASE_URL                       "https://trmnl.app"
+#define API_BASE_URL                       "https://admin.lia-stay.com"
 
 // Abort an image download when the stream goes this long with no data.
 #define IMAGE_STREAM_INACTIVITY_TIMEOUT_MS 15000

@@ -2107,6 +2107,18 @@ void display_show_msg(uint8_t *image_buffer, MSG message_type, const char *messa
 #endif
     bbep.setTextColor(BBEP_BLACK, BBEP_WHITE);
 
+    // The loading image is retained for its panel-safe blank background, but its
+    // original lower-right mark is replaced with the LIA wordmark.
+    if (message_type == NONE)
+    {
+        const char lia_wordmark[] = "LIA";
+        bbep.fillRect(width - 112, height - 112, 112, 112, BBEP_WHITE);
+        bbep.setFont(Roboto_Black_24);
+        bbep.getStringBox(lia_wordmark, &rect);
+        bbep.setCursor(width - rect.w - 18, height - rect.h - 18);
+        bbep.print(lia_wordmark);
+    }
+
     switch (message_type)
     {
     case OTG_TURNED_ON:
@@ -2168,7 +2180,7 @@ void display_show_msg(uint8_t *image_buffer, MSG message_type, const char *messa
     }
     case SHIPPING_MODE:
     {
-        const char string1[] = "Welcome to TRMNL.";
+        const char string1[] = "Welcome to LIA.";
         bbep.getStringBox(string1, &rect);
         bbep.setCursor((bbep.width() - rect.w)/2, 430);
         bbep.println(string1);
@@ -2207,7 +2219,7 @@ void display_show_msg(uint8_t *image_buffer, MSG message_type, const char *messa
 
     case WIFI_CONNECT:
     {
-        const char string1[] = "Connect to TRMNL WiFi";
+        const char string1[] = "Connect to LIA WiFi";
         bbep.getStringBox(string1, &rect);
         bbep.setCursor((bbep.width() - rect.w)/2, 430);
         bbep.println(string1);
@@ -2219,7 +2231,7 @@ void display_show_msg(uint8_t *image_buffer, MSG message_type, const char *messa
     break;
     case WIFI_FAILED:
     {
-        String string0 = "TRMNL firmware ";
+        String string0 = "LIA firmware ";
         string0 += Messages::firmware_version();
 #ifdef __BB_EPAPER__
         bbep.setCursor(40, 48); // place in upper left corner
@@ -2358,7 +2370,7 @@ void display_show_msg(uint8_t *image_buffer, MSG message_type, const char *messa
     break;
     case API_SIZE_ERROR:
     {
-        const char string1[] = "WiFi connected, TRMNL content malformed.";
+        const char string1[] = "WiFi connected, LIA content malformed.";
         bbep.getStringBox(string1, &rect);
 #ifdef __BB_EPAPER__
         bbep.setCursor((bbep.width() - rect.w) / 2, 400);
@@ -2767,7 +2779,7 @@ void display_show_msg(uint8_t *image_buffer, MSG message_type, String friendly_i
     case FRIENDLY_ID:
     {
         Log_info("friendly id case");
-        const char string1[] = "Please visit trmnl.com/start";
+        const char string1[] = "Complete setup in the LIA portal";
         bbep.getStringBox(string1, &rect);
 #ifdef __BB_EPAPER__
         bbep.setCursor((bbep.width() - rect.w)/2, 400);
@@ -2791,12 +2803,12 @@ void display_show_msg(uint8_t *image_buffer, MSG message_type, String friendly_i
     {
         Log_info("wifi connect case");
 
-        String string1 = "TRMNL firmware ";
+        String string1 = "LIA firmware ";
         string1 += fw_version;
         bbep.setCursor(40, 48); // place in upper left corner
         bbep.println(string1);
         String string2 = "Connect your phone or computer to ";
-        string2 += (message.length() > 0) ? "\"" + message + "\"" : String("the TRMNL");
+        string2 += (message.length() > 0) ? "\"" + message + "\"" : String("LIA");
         string2 += " Wi-Fi";
         bbep.getStringBox(string2, &rect);
 #ifdef __BB_EPAPER__
